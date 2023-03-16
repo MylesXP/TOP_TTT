@@ -58,4 +58,8 @@ body {
 }
 .grid-item:nth-of-type(2) {
   border-bottom: none;
+}
+
+#player_button_dock {
+  margin-block: 2%;
 }/*# sourceMappingURL=styles.css.map */

@@ -1,45 +1,39 @@
 let currentPlayer = 1;
 let gridItem = document.getElementsByClassName('grid-item');
-let playerBoard = document.getElementById('player_board');
-let playerBoardCounter = document.getElementById('player_board_counter');
-playerBoardCounter.textContent = currentPlayer
+
 
 
 
 // Make gameboard a module IIFE
 const gameBoard = (() => {
     let board = [];
-    return {board};
+    let playerBoardCounter = document.getElementById('player_board_counter');
+    playerBoardCounter.textContent = currentPlayer
+
+    return {board, playerBoardCounter};
 })();
 
 
 // Make players a factory function
-const createPlayer = (name,playerNum) => {
-
-    let playerName = () => name;
+const createPlayer = (playerNum) => {
 
     let playerNumber = () => playerNum;
 
     let mark;
 
     if (playerNum == 1) {
-        mark = 'x'
+        mark = 'x';
     } else {
         mark = 'o';
     }
 
-    return {mark, playerName, playerNumber};
+    return {mark, playerNumber};
 };
 
-// const playerStorage = () => {
-//     let player1 =  
-// }
+const player1 = createPlayer(1);
 
-const jeff = createPlayer('jeff',1);
+const player2 = createPlayer(2);
 
-const greg = createPlayer('greg',2);
-
-console.log(jeff.mark);
 
 // Switch player
 function changePlayer() {
@@ -48,7 +42,7 @@ function changePlayer() {
     } else if (currentPlayer == 2){
         currentPlayer = 1;
     }
-    playerBoardCounter.textContent = currentPlayer;
+    gameBoard.playerBoardCounter.textContent = currentPlayer;
 }
 
 
@@ -59,9 +53,14 @@ for (let i = 0; i < gridItem.length; i++){
             return;
         } else {
             changePlayer()
+            gridItem[i].textContent = player1.mark;
         }
-        gridItem[i].textContent = greg.mark;
-        
     });
-    
 };
+
+// Reset board
+function reset () {
+    for (let i = 0; i < gridItem.length; i++){
+        gridItem[i].textContent = '';
+    };
+}
