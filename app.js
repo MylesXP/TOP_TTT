@@ -52,8 +52,14 @@ for (let i = 0; i < gridItem.length; i++){
         if(gridItem[i].textContent){
             return;
         } else {
+            if (currentPlayer == player1.playerNumber()) {
+                gridItem[i].textContent = player1.mark;
+            } else if (currentPlayer == player2.playerNumber()){
+                gridItem[i].textContent = player2.mark;
+            } else {
+                console.log('error')
+            }
             changePlayer()
-            gridItem[i].textContent = player1.mark;
         }
     });
 };
@@ -63,4 +69,6 @@ function reset () {
     for (let i = 0; i < gridItem.length; i++){
         gridItem[i].textContent = '';
     };
+    currentPlayer = 1;
+    gameBoard.playerBoardCounter.textContent = currentPlayer;
 }
