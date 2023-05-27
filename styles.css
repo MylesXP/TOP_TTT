@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   margin: 0;
   box-sizing: border-box;
 }
@@ -11,16 +12,36 @@ body {
   flex-direction: column;
 }
 
-.grid-container {
+#overlay {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+#grid_container {
   display: flex;
   height: 50vh;
   width: 50vw;
   background-color: cadetblue;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.grid {
+#grid {
   display: grid;
   max-width: 75% !important;
   max-height: 75% !important;
@@ -62,4 +83,43 @@ body {
 
 #player_button_dock {
   margin-block: 2%;
+}
+
+#p1_input {
+  text-align: center;
+}
+
+#p1_name_label {
+  color: rgb(59, 130, 252);
+  display: block;
+  margin-block: 10px;
+}
+
+#p1_input_button {
+  display: block;
+  margin: 10px auto;
+}
+
+#p1_input_field {
+  text-align: center;
+}
+
+#p2_input {
+  text-align: center;
+  display: none;
+}
+
+#p2_name_label {
+  color: rgb(250, 62, 62);
+  display: block;
+  margin-block: 10px;
+}
+
+#p2_input_button {
+  display: block;
+  margin: 10px auto;
+}
+
+#p2_input_field {
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

@@ -10,9 +10,21 @@
 </head>
 
 <body>
-    <h2 id="player_board">Player: <span id="player_board_counter"></span></h2>
-    <div class="grid-container">
-        <div class="grid">
+    <div id="overlay">
+        <form name="p1_input" id="p1_input">
+            <label id="p1_name_label" for="p1-name">Player 1 Name</label>
+            <input id="p1_input_field" type="text" name="p1-name">
+            <input id="p1_input_button" type="button" value="Submit">
+        </form>
+        <form name="p2_input" id="p2_input">
+            <label id="p2_name_label" for="p2-name">Player 2 Name</label>
+            <input id="p2_input_field" type="text" name="p2-name">
+            <input id="p2_input_button" type="button" value="Submit">
+        </form>
+    </div>
+    <h2 id="player_board"><span id="player_board_counter"></span>'s Turn</h2>
+    <div id="grid_container">
+        <div id="grid">
             <div class="grid-line first-grid-line" data-line="0">
                 <div class="grid-item" data-item="0"></div>
                 <div class="grid-item" data-item="1"></div>
@@ -31,8 +43,7 @@
         </div>
     </div>
     <div id="player_button_dock">
-        <button>Start</button>
-        <button onclick="reset()">Reset</button>
+        <button id="reset">Reset</button>
     </div>
 
 
