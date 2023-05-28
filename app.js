@@ -22,8 +22,6 @@ const gameBoard = (() => {
         [0,0,0]
     ];
     let playerBoardCounter = document.getElementById('player_board_counter');
-    // playerBoardCounter.textContent = currentPlayer = 1 ? player1.playerName : player2.playerName;
-
     return {board, playerBoardCounter};
 })();
 
@@ -132,12 +130,6 @@ resetButton.addEventListener('click', () => {
     reset();
 });
 
-// p1SubmitButton.addEventListener('click', () => {
-//     p1Form.classList.add("hide")
-//     p2Form.classList.add("show");
-//     player1.playerName = p1InputField.value
-// });
-
 p1SubmitButton.addEventListener('click', () => {
     if (playerNamePattern.test(p1InputField.value)) {
         p1Form.classList.add("hide")
@@ -155,6 +147,7 @@ p2SubmitButton.addEventListener('click', () => {
     if (playerNamePattern.test(p2InputField.value)) {
         overlay.classList.add('hide')
         player2.playerName = p2InputField.value
+        gameBoard.playerBoardCounter.textContent = `${player1.playerName}'s Turn`;
     } else {
         p2InputField.classList.add('error');
         p2InputErrorMessage.classList.add('show');
@@ -197,7 +190,7 @@ var x = new MutationObserver(e => {
     }
 
     //Straight Down
-    if (gridItem[0].textContent == player1.mark && gridItem[3].textContent == player1.mark && gridItem[6].textContent == player1.mark || gridItem[0].textContent == player2.mark && gridItem[3].textContent == player2.mark && gridItem[6].textContent == player2.mark){
+    else if (gridItem[0].textContent == player1.mark && gridItem[3].textContent == player1.mark && gridItem[6].textContent == player1.mark || gridItem[0].textContent == player2.mark && gridItem[3].textContent == player2.mark && gridItem[6].textContent == player2.mark){
         console.log(`${gridItem[0].textContent == 'o' ? player2.playerName : player1.playerName} Wins!!!`);
         gridItem[0].classList.add('won');
         gridItem[3].classList.add('won');
@@ -229,7 +222,7 @@ var x = new MutationObserver(e => {
     }
 
     //Diagonal
-    if (gridItem[0].textContent == player1.mark && gridItem[4].textContent == player1.mark && gridItem[8].textContent == player1.mark || gridItem[0].textContent == player2.mark && gridItem[4].textContent == player2.mark && gridItem[8].textContent == player2.mark ){
+    else if (gridItem[0].textContent == player1.mark && gridItem[4].textContent == player1.mark && gridItem[8].textContent == player1.mark || gridItem[0].textContent == player2.mark && gridItem[4].textContent == player2.mark && gridItem[8].textContent == player2.mark ){
         console.log(`${gridItem[0].textContent == 'o' ? player2.playerName : player1.playerName} Wins!!!`);
         gridItem[0].classList.add('won');
         gridItem[4].classList.add('won');
@@ -256,7 +249,7 @@ var x = new MutationObserver(e => {
     //Tie
     else if (gridItem[0].textContent && gridItem[1].textContent && gridItem[2].textContent && gridItem[3].textContent && gridItem[4].textContent && gridItem[5].textContent && gridItem[6].textContent && gridItem[7].textContent && gridItem[8].textContent){
         gameEndMarker = 1;
-        console.log('Tie!!!')
+        gameBoard.playerBoardCounter.textContent = 'Tie!'
     }
 });
 
